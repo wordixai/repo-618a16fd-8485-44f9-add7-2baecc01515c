@@ -1,27 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers:wght@400&family=Comic+Neue:wght@400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
+/* Pop Art Design System */
 @layer base {
   :root {
-   
-  }
-
-  .dark {
-
+    /* Pop Art Colors - HSL */
+    --pop-orange: 24 100% 55%;
+    --pop-pink: 320 100% 65%;
+    --pop-yellow: 45 100% 60%;
+    --pop-blue: 200 100% 60%;
+    --pop-red: 0 100% 60%;
+    --pop-black: 0 0% 10%;
+    --pop-white: 0 0% 98%;
+    
+    /* Gradients */
+    --gradient-orange-pink: linear-gradient(45deg, hsl(var(--pop-orange)), hsl(var(--pop-pink)));
+    --gradient-pink-blue: linear-gradient(135deg, hsl(var(--pop-pink)), hsl(var(--pop-blue)));
+    --gradient-yellow-orange: linear-gradient(90deg, hsl(var(--pop-yellow)), hsl(var(--pop-orange)));
+    
+    /* Design tokens */
+    --border: var(--pop-black);
+    --input: var(--pop-white);
+    --ring: var(--pop-pink);
+    --background: var(--pop-white);
+    --foreground: var(--pop-black);
+    --primary: var(--pop-orange);
+    --primary-foreground: var(--pop-white);
+    --secondary: var(--pop-pink);
+    --secondary-foreground: var(--pop-white);
+    --accent: var(--pop-yellow);
+    --accent-foreground: var(--pop-black);
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 40%;
+    --popover: var(--pop-white);
+    --popover-foreground: var(--pop-black);
+    --card: var(--pop-white);
+    --card-foreground: var(--pop-black);
+    --destructive: var(--pop-red);
+    --destructive-foreground: var(--pop-white);
+    --radius: 0.5rem;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
+/* Pop Art Patterns */
+.pop-dots {
+  background-image: radial-gradient(circle, hsl(var(--pop-black)) 2px, transparent 2px);
+  background-size: 20px 20px;
+}
 
-  body {
-    @apply bg-background text-foreground;
-  }
+.pop-dots-large {
+  background-image: radial-gradient(circle, hsl(var(--pop-pink)) 4px, transparent 4px);
+  background-size: 40px 40px;
+}
+
+.pop-halftone {
+  background-image: radial-gradient(circle, rgba(0,0,0,0.3) 1px, transparent 1px);
+  background-size: 15px 15px;
+}
+
+/* Pop Art Typography */
+.pop-title {
+  font-family: 'Bangers', cursive;
+  text-shadow: 3px 3px 0px hsl(var(--pop-black));
+  transform: rotate(-2deg);
+}
+
+.pop-text {
+  font-family: 'Comic Neue', cursive;
+  font-weight: 700;
+}
+
+/* Pop Art Animations */
+@keyframes bounce-pop {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0) rotate(-1deg); }
+  40% { transform: translateY(-10px) rotate(1deg); }
+  60% { transform: translateY(-5px) rotate(-0.5deg); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+@keyframes pulse-pop {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.animate-bounce-pop {
+  animation: bounce-pop 2s infinite;
+}
+
+.animate-wiggle {
+  animation: wiggle 0.5s ease-in-out;
+}
+
+.animate-pulse-pop {
+  animation: pulse-pop 1s ease-in-out infinite;
+}
+
+/* Comic Book Frame Effect */
+.comic-frame {
+  border: 6px solid hsl(var(--pop-black));
+  border-radius: 20px;
+  box-shadow: 
+    0 0 0 3px hsl(var(--pop-white)),
+    0 0 0 9px hsl(var(--pop-black)),
+    8px 8px 0px hsl(var(--pop-orange));
+  position: relative;
+}
+
+.comic-frame::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 3px solid hsl(var(--pop-white));
+  border-radius: 20px;
+  z-index: -1;
+}
+
+/* Burst Effect */
+.burst {
+  position: relative;
+}
+
+.burst::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: conic-gradient(from 0deg, hsl(var(--pop-yellow)), hsl(var(--pop-orange)), hsl(var(--pop-pink)), hsl(var(--pop-blue)), hsl(var(--pop-yellow)));
+  border-radius: 50%;
+  z-index: -1;
+  animation: spin 20s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }

@@ -61,12 +61,29 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Pop Art Colors
+				'pop-orange': 'hsl(var(--pop-orange))',
+				'pop-pink': 'hsl(var(--pop-pink))',
+				'pop-yellow': 'hsl(var(--pop-yellow))',
+				'pop-blue': 'hsl(var(--pop-blue))',
+				'pop-red': 'hsl(var(--pop-red))',
+				'pop-black': 'hsl(var(--pop-black))',
+				'pop-white': 'hsl(var(--pop-white))'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			backgroundImage: {
+				'gradient-pop': 'var(--gradient-orange-pink)',
+				'gradient-pop-alt': 'var(--gradient-pink-blue)',
+				'gradient-pop-warm': 'var(--gradient-yellow-orange)'
+			},
+			fontFamily: {
+				'pop': ['Bangers', 'cursive'],
+				'comic': ['Comic Neue', 'cursive']
 			},
 			keyframes: {
 				'accordion-down': {
@@ -84,11 +101,22 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'bounce-pop': {
+					'0%, 20%, 50%, 80%, 100%': { transform: 'translateY(0) rotate(-1deg)' },
+					'40%': { transform: 'translateY(-10px) rotate(1deg)' },
+					'60%': { transform: 'translateY(-5px) rotate(-0.5deg)' }
+				},
+				'wiggle': {
+					'0%, 100%': { transform: 'rotate(-2deg)' },
+					'50%': { transform: 'rotate(2deg)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'bounce-pop': 'bounce-pop 2s infinite',
+				'wiggle': 'wiggle 0.5s ease-in-out'
 			}
 		}
 	},
